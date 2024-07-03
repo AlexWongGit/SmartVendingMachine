@@ -1,0 +1,20 @@
+server:
+  port:7021
+spring:
+  application:
+    name: vm-network-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:150.158.76.169}:${NACOS_PORT:8848}
+        namespace: ${NACOS_NAMESPACE:038acf93-89c9-4345-ab4b-066764f8d3ff}
+        metadata:
+          VERSION: ${spring.profiles.active}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        namespace: ${NACOS_NAMESPACE:038acf93-89c9-4345-ab4b-066764f8d3ff}
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
