@@ -1,6 +1,6 @@
 package com.alex.vm.listener;
 
-public class MqttListener {
+public class MqttEventListener {
 
 
 }
